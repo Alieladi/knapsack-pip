@@ -1,5 +1,6 @@
-from GeneralKnapsack import Knapsack
+from Knapsack import Knapsack
 import time
+
 class BBKnapsack(Knapsack):
 
 	def __init__(self, capacity=0, profits=[], weights=[]):
@@ -63,13 +64,26 @@ class BBKnapsack(Knapsack):
 
 		return upper_bound
 
-	def maximize(self):
+	def maximize(self, positive_only=False):
+		""" Function to solve the knapsack problem
+
+		Args:
+			None
+		Returns:
+			max_solution (list of ints): ids of the best set of items
+			max_profit (float): best profit
+		"""
+		super().maximize(positive_only)
+
 		max_node = []
 		max_profit = 0
+
+		# solve problem
 		node = []
 		profit = 0
 		level = 0
 		capacity = self.capacity
+
 		stack = [(level, node, capacity, profit)]
 		while stack:
 			level, node, capacity, profit = stack.pop()
@@ -83,10 +97,11 @@ class BBKnapsack(Knapsack):
 				if profit > max_profit:
 					max_node = node
 					max_profit = profit
-					print("update -----")
+					"""print("update -----")
 					print("profit", max_profit)
-					print("node", max_node)
-					print("------------")
+					print("node", max_solution)
+					print("------------")"""
+
 				continue
 
 			# Include right child ?
@@ -105,15 +120,20 @@ class BBKnapsack(Knapsack):
 				left_profit = profit + item_profit
 				upper_bound = self.upper_bound(level, capacity)
 				if (max_profit < left_profit + upper_bound):
-					left_node = node + [item_id]
+					left_solution = node + [item_id]
 					left_level = level + 1
-					left_child = (left_level, left_node, left_capacity, left_profit)
+					left_child = (left_level, left_solution, left_capacity, left_profit)
 					stack.append(left_child)
 
-		self.max_profit = max_profit
-		self.max_node = [0]*self.len
-		for k in max_node:
-			 self.max_node[k] = 1
+		# fill solution
+		self.max_profit += max_profit
+
+		for i in max_node:
+			 self.max_solution[i] = 1
+		for i in self.Nminus_ids:
+			self.max_solution[i] = 1-self.max_solution[i]
+
+		return self.max_profit, self.max_solution
 
 
 if __name__ == "__main__":
@@ -121,7 +141,7 @@ if __name__ == "__main__":
 	weights = [2, 3.14, 1.98, 5, 3]
 	profits = [40, 50, 100, 95, 30]"""
 	capacity = 50
-	weights = [31, 10, 20, 19, 4, 3, 6]
+	weights = [31, 10, 20, 20, 4, 3, -6]
 	profits = [70, 20, 39, 37, 7, 5, 10]
 	start = time.time()
 	saki = BBKnapsack(capacity, profits, weights)
@@ -130,4 +150,10 @@ if __name__ == "__main__":
 
 	print("final result")
 	print(saki.max_profit)
-	print(saki.max_node)
+	print(saki.max_solution)
+
+	saki = BBKnapsack(capacity, profits, weights)
+	saki.minimize()
+	print("final min result")
+	print(saki.min_profit)
+	print(saki.min_solution)
