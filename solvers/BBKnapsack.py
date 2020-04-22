@@ -1,4 +1,4 @@
-from Knapsack import Knapsack
+from .Knapsack import Knapsack
 import time
 
 class BBKnapsack(Knapsack):
@@ -136,10 +136,10 @@ class BBKnapsack(Knapsack):
 		return self.max_profit, self.max_solution
 
 
+
+
+
 if __name__ == "__main__":
-	"""capacity = 10
-	weights = [2, 3.14, 1.98, 5, 3]
-	profits = [40, 50, 100, 95, 30]"""
 	capacity = 50
 	weights = [31, 10, 20, 20, 4, 3, -6]
 	profits = [70, 20, 39, 37, 7, 5, 10]

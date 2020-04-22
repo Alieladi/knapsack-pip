@@ -1,2 +1,2 @@
 from .BBKnapsack import BBKnapsack
-from .HMKnapsack import HMKnapsack
+from .HSKnapsack import HSKnapsack

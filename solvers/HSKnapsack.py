@@ -1,4 +1,4 @@
-from Knapsack import Knapsack
+from .Knapsack import Knapsack
 import time
 
 class HSKnapsack(Knapsack):
