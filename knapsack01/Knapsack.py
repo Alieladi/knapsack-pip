@@ -129,7 +129,6 @@ class Knapsack:
 		"""
 		self.capacity = sum(self.weights) - self.capacity
 		self.min_profit = sum(self.profits)
-		print(self.capacity)
 		self.maximize()
 		self.min_solution = [1-x for x in self.max_solution]
 		self.min_profit -= self.max_profit

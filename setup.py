@@ -8,9 +8,10 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(name='knapsack-pip',
-      version='0.11',
+      version='0.2',
       description='Knapsack problem solver',
       long_description=long_description,
+      long_description_content_type='text/markdown',
       url='https://github.com/Alieladi/knapsack-pip',
       author="Ali El Adi",
       author_email="alieladi@gmail.com",
