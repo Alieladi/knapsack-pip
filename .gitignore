@@ -11,5 +11,5 @@ __pycache__/
 # due to using tox and pytest
 .tox
 .cache
-test_test_knapsack.py
-tests/
+knapsack01/unittest_knapsack.py
+tests/test_pytest.py

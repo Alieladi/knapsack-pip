@@ -1,5 +1,5 @@
-from solvers.BBKnapsack import BBKnapsack
-from solvers.HSKnapsack import HSKnapsack
+from knapsack01.BBKnapsack import BBKnapsack
+from knapsack01.HSKnapsack import HSKnapsack
 
 capacity = 50
 weights = [31, 10, 20, 19, 4, 3, 6]

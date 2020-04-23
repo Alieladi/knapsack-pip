@@ -1,4 +1,5 @@
 from setuptools import setup, find_packages
+from os import path
 
 here = path.abspath(path.dirname(__file__))
 
@@ -7,7 +8,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(name='knapsack-pip',
-      version='0.1',
+      version='0.11',
       description='Knapsack problem solver',
       long_description=long_description,
       url='https://github.com/Alieladi/knapsack-pip',
@@ -18,6 +19,6 @@ setup(name='knapsack-pip',
         'License :: OSI Approved :: MIT License'
         ],
       keywords='knapsack backpack',
-      packages=['solvers'],
-      python_requires='>=3'
+      packages=['knapsack01'],
+      python_requires='>=3',
       zip_safe=False)
