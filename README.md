@@ -20,23 +20,23 @@ The output includes the maximum or minimum profit and its corresponding solution
 ```
 from knapsack01.BBKnapsack import BBKnapsack
 
-capacity = 50
+max_capacity = 50
 weights = [31, 10, 20, 20, 5, 3, -6]
 profits = [70, 20, 39, 37, 7, 5, 10]
 
-my_knapsack1 = BBKnapsack(capacity, profits, weights)
+my_knapsack1 = BBKnapsack(max_capacity, profits, weights)
 max_profit, max_solution = my_knapsack1.maximize()
-# (126, [1, 0, 1, 0, 1, 0, 1])
+# --> (126, [1, 0, 1, 0, 1, 0, 1])
 ```
 ### Example of minimization
 ```
 from knapsack01.BBKnapsack import BBKnapsack
 
-capacity = 50
+min_capacity = 50
 weights = [31, 10, 20, 20, 5, 3, -6]
 profits = [70, 20, 39, 37, 7, 5, 10]
 
-my_knapsack2 = BBKnapsack(capacity, profits, weights)
+my_knapsack2 = BBKnapsack(min_capacity, profits, weights)
 min_profit, min_solution = my_knapsack2.minimize()
-# (96, [0, 1, 1, 1, 0, 1, 0])
+# --> (96, [0, 1, 1, 1, 0, 0, 0])
 ```
